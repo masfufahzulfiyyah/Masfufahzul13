@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonlight Cafe ♡</title>
+  <style>
+    :root{
+      --blue:#a9d9f5;
+      --blue2:#dff3ff;
+      --deep:#5d9fc8;
+      --text:#38566a;
+      --white:#ffffff;
+      --shadow:0 15px 45px rgba(93,159,200,.18);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color:var(--text);
+      background:linear-gradient(135deg,#fff 0%,#f5fbff 55%,#e8f6ff 100%);
+      min-height:100vh;
+    }
+    .page{max-width:1050px;margin:auto;padding:20px}
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 4px 25px;
+    }
+    .brand{font-size:1.35rem;font-weight:800;color:var(--deep)}
+    .brand span{font-weight:400;color:#8ebbd6}
+    .hero{
+      min-height:540px;display:grid;grid-template-columns:1.05fr .95fr;
+      align-items:center;gap:25px;
+    }
+    .card{
+      background:rgba(255,255,255,.86);border:1px solid #dff2ff;
+      border-radius:30px;box-shadow:var(--shadow);backdrop-filter:blur(8px);
+    }
+    .intro{padding:42px}
+    .eyebrow{color:var(--deep);font-weight:700;letter-spacing:2px}
+    h1{font-size:clamp(3rem,8vw,5.7rem);line-height:.9;margin:12px 0;color:#5b99bd}
+    .intro p{font-size:1.05rem;line-height:1.7}
+    .queue{
+      margin-top:25px;padding:24px;border-radius:22px;background:var(--blue2);
+      text-align:center;border:1px solid #c9eaff
+    }
+    .queue-number{font-size:3.8rem;font-weight:900;color:var(--deep);margin:5px}
+    button{
+      border:0;border-radius:16px;padding:13px 20px;font-weight:800;
+      color:white;background:linear-gradient(135deg,#8ec9ed,#65a9d3);
+      cursor:pointer;box-shadow:0 8px 20px rgba(101,169,211,.25);
+      transition:.2s transform,.2s box-shadow;
+    }
+    button:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(101,169,211,.35)}
+    .bunny-stage{
+      min-height:500px;position:relative;display:flex;align-items:center;justify-content:center;
+      overflow:hidden;border-radius:35px;
+      background:radial-gradient(circle at 50% 45%,#fff 0 25%,#edf9ff 60%,#d9f1ff 100%);
+    }
+    .moon{position:absolute;top:45px;right:55px;width:105px;height:105px;border-radius:50%;
+      background:#fff;box-shadow:0 0 45px rgba(255,255,255,.95)}
+    .star{position:absolute;color:#8fc9e9;animation:twinkle 2.5s infinite}
+    .s1{top:80px;left:70px}.s2{top:170px;right:35px}.s3{bottom:110px;left:55px}
+    @keyframes twinkle{50%{opacity:.3;transform:scale(.7)}}
+    .bunny{position:relative;margin-top:55px;width:205px;height:330px;animation:float 3.2s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-10px)}}
+    .ear{position:absolute;width:58px;height:135px;background:#fff;border:3px solid #b9e1f4;border-radius:50% 50% 45% 45%;top:0}
+    .ear:after{content:"";position:absolute;inset:13px 14px 18px;background:#dff3ff;border-radius:50%}
+    .ear.left{left:32px;transform:rotate(-9deg)}.ear.right{right:32px;transform:rotate(9deg)}
+    .head{position:absolute;top:72px;left:27px;width:151px;height:142px;background:#fff;border:3px solid #b9e1f4;border-radius:48%}
+    .eye{position:absolute;width:10px;height:15px;border-radius:50%;background:#58798d;top:61px}
+    .eye.l{left:45px}.eye.r{right:45px}
+    .nose{position:absolute;left:68px;top:78px;color:#8ebbd6;font-size:18px}
+    .cheek{position:absolute;top:78px;width:25px;height:13px;background:#e9f7ff;border-radius:50%}
+    .cheek.l{left:17px}.cheek.r{right:17px}
+    .dress{position:absolute;left:18px;top:190px;width:170px;height:135px;background:#a9d9f5;
+      border:3px solid #82c1e5;clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);border-radius:20px}
+    .collar{position:absolute;left:68px;top:187px;width:70px;height:35px;background:white;clip-path:polygon(0 0,50% 100%,100% 0)}
+    .ribbon{position:absolute;top:72px;left:90px;z-index:5}
+    .ribbon:before,.ribbon:after{content:"";position:absolute;width:32px;height:24px;background:#79b9dd;border:2px solid #fff}
+    .ribbon:before{right:5px;transform:rotate(25deg);border-radius:4px 15px 4px 15px}
+    .ribbon:after{left:5px;transform:rotate(-25deg);border-radius:15px 4px 15px 4px}
+    .ribbon-dot{position:absolute;z-index:2;width:18px;height:18px;background:#fff;border-radius:50%;left:31px;top:5px}
+    .section{padding:38px;margin:30px 0}
+    .section h2{text-align:center;color:#5d9fc8;font-size:2rem;margin-top:0}
+    .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .menu-box{padding:22px;background:#f8fcff;border:1px solid #dff2ff;border-radius:22px}
+    .menu-box h3{margin-top:0;color:#5d9fc8}
+    .item{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px dashed #c7e6f6}
+    .item:last-child{border-bottom:0}
+    .price{font-weight:800;color:#6ca8ca;white-space:nowrap}
+    .form{display:grid;gap:14px;max-width:600px;margin:auto}
+    input,select{
+      width:100%;padding:14px 16px;border:1px solid #cde8f7;border-radius:14px;
+      font:inherit;color:var(--text);background:white;outline:none;
+    }
+    input:focus,select:focus{border-color:#8bc7e8;box-shadow:0 0 0 4px #e7f6ff}
+    .payment{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+    .pay{padding:14px;text-align:center;background:white;border:1px solid #d8eefb;border-radius:15px}
+    .note{text-align:center;font-size:.9rem;color:#7898aa}
+    footer{text-align:center;padding:30px;color:#79a0b4}
+    .hidden{display:none}
+    .success{margin-top:20px;padding:20px;border-radius:18px;background:#eaf8ff;text-align:center}
+    @media(max-width:760px){
+      .hero{grid-template-columns:1fr}.bunny-stage{min-height:430px}
+      .menu-grid{grid-template-columns:1fr}.payment{grid-template-columns:1fr 1fr}
+      .intro{padding:28px}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">☾ Moonlight <span>Cafe</span></div>
+    <div>♡ cozy & sweet</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="card intro">
+        <div class="eyebrow">WELCOME TO</div>
+        <h1>Moonlight<br>Cafe</h1>
+        <p>Tempat mungil bernuansa putih & soft blue untuk menikmati dessert, makanan, dan minuman favoritmu. Ambil nomor antrian secara online tanpa ribet!</p>
+
+        <div class="queue">
+          <div>Nomor antrian saat ini</div>
+          <div class="queue-number" id="currentQueue">A001</div>
+          <button onclick="takeQueue()">Ambil Nomor Antrian ♡</button>
+          <div class="note" style="margin-top:10px">Nomor akan tersimpan di browser ini.</div>
+        </div>
+      </div>
+
+      <div class="card bunny-stage">
+        <div class="moon"></div>
+        <div class="star s1">✦</div><div class="star s2">✧</div><div class="star s3">✦</div>
+        <div class="bunny" aria-label="Kelinci Moonlight Cafe">
+          <div class="ear left"></div><div class="ear right"></div>
+          <div class="ribbon"><div class="ribbon-dot"></div></div>
+          <div class="head">
+            <div class="eye l"></div><div class="eye r"></div>
+            <div class="nose">⌄</div>
+            <div class="cheek l"></div><div class="cheek r"></div>
+          </div>
+          <div class="collar"></div>
+          <div class="dress"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>☁ Daftar Menu ☁</h2>
+      <div class="menu-grid">
+        <div class="menu-box">
+          <h3>🍰 Dessert & Food</h3>
+          <div class="item"><span>Cheesecake</span><span class="price">Rp 25.000</span></div>
+          <div class="item"><span>Strawberry Cake</span><span class="price">Rp 27.000</span></div>
+          <div class="item"><span>Red Velvet Cake</span><span class="price">Rp 28.000</span></div>
+          <div class="item"><span>Pancake</span><span class="price">Rp 22.000</span></div>
+          <div class="item"><span>Brownies</span><span class="price">Rp 20.000</span></div>
+          <div class="item"><span>Mie Goreng</span><span class="price">Rp 18.000</span></div>
+          <div class="item"><span>Burger</span><span class="price">Rp 25.000</span></div>
+          <div class="item"><span>Hotdog</span><span class="price">Rp 23.000</span></div>
+          <div class="item"><span>French Fries</span><span class="price">Rp 17.000</span></div>
+        </div>
+
+        <div class="menu-box">
+          <h3>🧋 Minuman</h3>
+          <div class="item"><span>Orange Juice</span><span class="price">Rp 15.000</span></div>
+          <div class="item"><span>Avocado Juice</span><span class="price">Rp 18.000</span></div>
+          <div class="item"><span>Espresso</span><span class="price">Rp 16.000</span></div>
+          <div class="item"><span>Americano</span><span class="price">Rp 17.000</span></div>
+          <div class="item"><span>Coffee Latte</span><span class="price">Rp 20.000</span></div>
+          <div class="item"><span>Cappuccino</span><span class="price">Rp 20.000</span></div>
+          <div class="item"><span>Matcha Latte</span><span class="price">Rp 22.000</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section" id="booking">
+      <h2>♡ Daftar Antrian</h2>
+      <div class="form">
+        <input id="name" type="text" placeholder="Nama kamu" maxlength="40">
+        <input id="people" type="number" min="1" max="10" placeholder="Jumlah orang">
+        <select id="visit">
+          <option value="">Pilih waktu kunjungan</option>
+          <option>10:00 - 12:00</option><option>12:00 - 14:00</option>
+          <option>14:00 - 16:00</option><option>16:00 - 18:00</option>
+          <option>18:00 - 20:00</option>
+        </select>
+        <select id="payment">
+          <option value="">Pilih metode pembayaran</option>
+          <option>QRIS</option><option>M-Banking</option><option>Mastercard</option><option>Tunai</option>
+        </select>
+        <button onclick="registerQueue()">Daftar Sekarang ✦</button>
+        <div id="result" class="success hidden"></div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>💳 Pembayaran</h2>
+      <div class="payment">
+        <div class="pay">▦<br><b>QRIS</b></div>
+        <div class="pay">⌁<br><b>M-Banking</b></div>
+        <div class="pay">◈<br><b>Mastercard</b></div>
+        <div class="pay">♡<br><b>Tunai</b></div>
+      </div>
+      <p class="note">*Harga dan data pembayaran pada demo ini dapat kamu ubah langsung di kode HTML.</p>
+    </section>
+  </main>
+
+  <footer>☾ Moonlight Cafe — made with blue & love ♡</footer>
+</div>
+
+<script>
+  let queue = Number(localStorage.getItem("moonlightQueue") || 1);
+  let myQueue = localStorage.getItem("myMoonlightQueue") || "";
+
+  function formatQueue(n){ return "A" + String(n).padStart(3,"0"); }
+  document.getElementById("currentQueue").textContent = formatQueue(queue);
+
+  function takeQueue(){
+    const number = formatQueue(queue++);
+    localStorage.setItem("moonlightQueue", queue);
+    myQueue = number;
+    localStorage.setItem("myMoonlightQueue", number);
+    document.getElementById("currentQueue").textContent = formatQueue(queue);
+    document.getElementById("booking").scrollIntoView({behavior:"smooth"});
+    alert("Nomor antrian kamu: " + number + "\\nSilakan lengkapi data pendaftaran.");
+  }
+
+  function registerQueue(){
+    const name = document.getElementById("name").value.trim();
+    const people = document.getElementById("people").value;
+    const visit = document.getElementById("visit").value;
+    const payment = document.getElementById("payment").value;
+    const result = document.getElementById("result");
+
+    if(!name || !people || !visit || !payment){
+      alert("Yuk lengkapi semua data terlebih dahulu ♡");
+      return;
+    }
+
+    if(!myQueue){
+      myQueue = formatQueue(queue++);
+      localStorage.setItem("moonlightQueue", queue);
+      localStorage.setItem("myMoonlightQueue", myQueue);
+      document.getElementById("currentQueue").textContent = formatQueue(queue);
+    }
+
+    result.classList.remove("hidden");
+    result.innerHTML = `
+      <b>Yeay, pendaftaran berhasil! ♡</b><br><br>
+      Nomor Antrian: <strong style="font-size:1.5rem">${myQueue}</strong><br>
+      Nama: ${escapeHTML(name)}<br>
+      Jumlah: ${people} orang<br>
+      Waktu: ${escapeHTML(visit)}<br>
+      Pembayaran: ${escapeHTML(payment)}
+    `;
+  }
+
+  function escapeHTML(text){
+    return text.replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[m]));
+  }
+</script>
+</body>
+</html>
